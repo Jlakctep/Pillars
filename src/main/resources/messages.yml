@@ -6,15 +6,26 @@ leave: "&eВы покинули арену."
 already-in: "&cВы уже на арене."
 not-in: "&cВы не в игре."
 no-arenas: "&cНет доступных арен для режима &e%size%&c."
+not-enough-players: "&cНедостаточно игроков. Ожидание..."
 
 # Старт/игра
+countdown-begin: "&aОтсчёт до начала игры начался!"
 starting-in: "&aИгра начнется через &e%sec%s&a."
 freeze: "&eПодготовка... Нельзя двигаться ещё &e%sec%s&e."
+started-title: "Игра началась"
 started: "&aИгра началась! Удачи."
 win: "&aПобедитель: &e%player%!"
 eliminated: "&cВы выбиты!"
 time-limit: "&eВремя игры истекло!"
 leave-hint: "&7Чтобы покинуть игру пропишите &e/pillars leave"
+bossbar-freeze: "&6Подготовка: &e%sec%c"
+bossbar-next-item: "&6Следующий предмет через &e%sec%c"
+
+# Объявления оставшегося времени
+time-left-min: "&eОсталось &6%min% &eмин."
+time-left-sec: "&eОсталось &6%sec% &eсекунд"
+time-left-5sec: "&655 &eсекунд..."
+time-left-count: "&6%sec%&e..."
 
 # Редактор
 arena-created: "&aАрена &e%id% &aсоздана (мир &e%world%&a). Вас перенесло в режим редактирования."

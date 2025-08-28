@@ -139,8 +139,8 @@ public class Arena {
         int sec = plugin.getConfig().getInt("timings.prestart-seconds", 30);
         countdownTicks = Math.max(1, sec) * 20;
         // Сообщаем один раз о старте отсчёта и начальном времени
-        broadcast("Отсчёт до начала игры начался!");
-        broadcast("Игра начнется через " + sec + " секунд!");
+        broadcast(Msg.tr("countdown-begin"));
+        broadcast(Msg.tr("starting-in").replace("%sec%", String.valueOf(sec)));
         if (loopTask == null) loopTask = Bukkit.getScheduler().runTaskTimer(plugin, this::tick, 1L, 1L);
     }
 
@@ -186,17 +186,17 @@ public class Arena {
             int minPlayers = plugin.getConfig().getInt("modes."+size.key()+".min-players", 2);
             if (players.size() < minPlayers) {
                 state = GameState.WAITING;
-                broadcast("&cНедостаточно игроков. Ожидание...");
+                broadcast(Msg.tr("not-enough-players"));
                 return;
             }
             if (countdownTicks % 20 == 0) {
                 int s = Math.max(0, countdownTicks / 20);
                 if (s >= 10 && s % 10 == 0) {
-                    broadcast("Игра начнется через " + s + " секунд!");
+                    broadcast(Msg.tr("starting-in").replace("%sec%", String.valueOf(s)));
                 } else if (s == 5) {
-                    broadcast("Игра начнется через 5 секунд!");
+                    broadcast(Msg.tr("starting-in").replace("%sec%", "5"));
                 } else if (s > 0 && s <= 4) {
-                    broadcast(s + "!");
+                    broadcast(String.valueOf(s));
                 }
             }
             if (--countdownTicks <= 0) startGame();
@@ -207,14 +207,14 @@ public class Arena {
                     int s = Math.max(0, freezeTicks / 20);
                     for (UUID u : players) {
                         Player p = Bukkit.getPlayer(u);
-                        if (p != null) p.sendActionBar("Подготовка... Нельзя двигаться ещё " + s + " секунд!");
+                        if (p != null) p.sendActionBar(Msg.tr("freeze").replace("%sec%", String.valueOf(s)));
                     }
                 }
                 if (--freezeTicks == 0) {
                     // показать титр "Игра началась"
                     for (UUID u : players) {
                         Player p = Bukkit.getPlayer(u);
-                        if (p != null) p.sendTitle(ChatColor.GREEN + "Игра началась", "", 10, 30, 10);
+                        if (p != null) p.sendTitle(ChatColor.GREEN + Msg.tr("started-title"), "", 10, 30, 10);
                     }
                     broadcast(Msg.tr("started"));
                 }
@@ -263,11 +263,11 @@ public class Arena {
             int period = Math.max(1, plugin.getConfig().getInt("timings.item-period-ticks", 40));
             if (bossBar != null) {
                 if (freezeTicks > 0) {
-                    bossBar.setTitle(ChatColor.GOLD + "Подготовка: " + ChatColor.YELLOW + String.format("%.1f", freezeTicks / 20.0) + "с");
+                    bossBar.setTitle(Msg.tr("bossbar-freeze").replace("%sec%", String.format("%.1f", freezeTicks / 20.0)));
                     bossBar.setProgress(Math.min(1.0, Math.max(0.0, 1.0 - (double)freezeTicks / (plugin.getConfig().getInt("timings.freeze-seconds", 5) * 20.0))));
                 } else {
                     double progress = 1.0 - (double)ticksToNextItem / (double)period;
-                    bossBar.setTitle(ChatColor.GOLD + "Следующий предмет через " + ChatColor.YELLOW + String.format("%.1f", Math.max(0, ticksToNextItem / 20.0)) + "с");
+                    bossBar.setTitle(Msg.tr("bossbar-next-item").replace("%sec%", String.format("%.1f", Math.max(0, ticksToNextItem / 20.0))));
                     bossBar.setProgress(Math.max(0.0, Math.min(1.0, progress)));
                 }
             }
