@@ -3,7 +3,7 @@
 Pillars — Pillars minigame for Paper/Bukkit
 Lightweight arenas where players spawn, get random items, build, and fight. Includes waiting lobby, freeze start, time limit, kill tracking, Vault rewards, spectators, NPC menus, and fully configurable scoreboard/messages.
 
-# Commands
+#Commands
 pillars join <1x1|1x4|1x8>: Join an available arena of the given mode
 pillars leave: Leave arena/spectate and return to lobby
 pillars start: Force-start the current arena (if inside)
@@ -21,7 +21,7 @@ pillars team1..team8: Set team spawns 1..8 (admin, in editor)
 NPC right-click opens a GUI with mode-specific arenas and a “Random Game” button.
 Permissions (LuckPerms)
 
-# Players:
+#Players:
 pillars.join: Join arena / NPC / GUI
 pillars.leave: Leave arena
 pillars.spectate: Spectate from lobby
@@ -43,5 +43,6 @@ Extras
 Economy (Vault): rewards for win/lose/kills/top placements.
 Scoreboard: separate templates for waiting and in-game; placeholders: %arena%, %mode%, %current%/%max%, %kills%, %timeleft%, %countdown%, etc.
 All behavior and messages are configurable via config.yml and messages.yml.
+
 
 
