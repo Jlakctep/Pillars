@@ -1,0 +1,7 @@
+name: SantaPillars
+version: '1.0-SNAPSHOT'
+main: org.jlakctep.santaPillars.SantaPillars
+api-version: '1.21'
+authors: [ Jlakctep ]
+description: Plugin create for SantaCraft (santamc)
+website: https://t.me/Jlakctep

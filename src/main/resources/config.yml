@@ -1,0 +1,89 @@
+language: ru
+
+modes:
+  "1x1":
+    min-players: 2
+    max-players: 2
+  "1x4":
+    min-players: 2
+    max-players: 4
+  "1x8":
+    min-players: 2
+    max-players: 8
+
+timings:
+  prestart-seconds: 30     # таймер ожидания при наборе минимума
+  freeze-seconds: 5        # после телепорта на точки командами teamN
+
+  item-period-ticks: 90    # выдача предмета каждые 2 секунды
+  hard-time-limit-seconds: 600   # 0 = без лимита
+
+win:
+  end-when-one-left: true
+
+items:
+  pool: ALL
+  prefer-blocks-weight: 0.8
+  stack-min: 1
+  stack-max: 1
+  blacklist:
+    - BEDROCK
+    - BARRIER
+    - COMMAND_BLOCK
+    - STRUCTURE_BLOCK
+    - JIGSAW
+    - END_PORTAL_FRAME
+    - LIGHT
+
+build:
+  allow-placing: true
+  allow-breaking: true
+  restrict-to-bounds: true
+  y-min: -64
+  y-max: 320
+  allow-item-drop: true
+
+economy:
+  enabled: true
+  reward:
+    win: 100.0
+    lose: 10.0
+    kill: 15.0
+    place1: 100.0
+    place2: 50.0
+    place3: 25.0
+
+ui:
+  scoreboard: true
+  bossbar: true
+  holograms: true
+
+lobby:
+  world: world
+  x: 0.5
+  y: 100.0
+  z: 0.5
+  yaw: 0.0
+  pitch: 0.0
+
+# Только для просмотра. Эти узлы не читаются плагином из конфига,
+# но их удобно видеть и настраивать в LuckPerms/Vault.
+permissions:
+  players:
+    pillars.join: { description: "Присоединение к арене, клик по NPC/GUI.", default: true }
+    pillars.leave: { description: "Покинуть арену.", default: true }
+    pillars.spectate: { description: "Наблюдение из лобби.", default: true }
+    pillars.lobby: { description: "Телепорт в лобби.", default: true }
+  special:
+    pillars.start: { description: "Форс-старт арены.", default: op }
+  admin:
+    pillars.admin: { description: "Все админ-команды.", default: false }
+    pillars.lobby.set: { description: "Установить лобби.", default: op }
+    pillars.create: { description: "Создать арену.", default: op }
+    pillars.edit: { description: "Редактировать арену.", default: op }
+    pillars.editleave: { description: "Выйти из редактора.", default: op }
+    pillars.addspawn: { description: "Поставить точку ожидания.", default: op }
+    pillars.team: { description: "Поставить точки team1..team8.", default: op }
+    pillars.arenaremove: { description: "Удалить арену.", default: op }
+    pillars.npc.create: { description: "Создать NPC.", default: op }
+    pillars.npc.remove: { description: "Удалить NPC.", default: op }

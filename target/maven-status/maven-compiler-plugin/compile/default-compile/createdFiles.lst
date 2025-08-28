@@ -1,0 +1,12 @@
+org\jlakctep\santaPillars\game\GameState.class
+org\jlakctep\santaPillars\game\Region.class
+org\jlakctep\santaPillars\SantaPillars$1.class
+org\jlakctep\santaPillars\SantaPillars.class
+org\jlakctep\santaPillars\listener\GameListener$1.class
+org\jlakctep\santaPillars\npc\NPCManager$NPCMeta.class
+org\jlakctep\santaPillars\npc\NPCManager.class
+org\jlakctep\santaPillars\game\GameSize.class
+org\jlakctep\santaPillars\item\ItemPool.class
+org\jlakctep\santaPillars\game\Arena$BlockPos.class
+org\jlakctep\santaPillars\game\ArenaManager.class
+org\jlakctep\santaPillars\game\Arena.class

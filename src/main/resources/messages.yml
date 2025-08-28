@@ -1,0 +1,51 @@
+prefix: "&6[SantaCraft]&r "
+
+# Общие
+join-waiting: "&aВы вошли в очередь арены &e%arena%&a (&e%size%&a)."
+leave: "&eВы покинули арену."
+already-in: "&cВы уже на арене."
+not-in: "&cВы не в игре."
+no-arenas: "&cНет доступных арен для режима &e%size%&c."
+
+# Старт/игра
+starting-in: "&aИгра начнется через &e%sec%s&a."
+freeze: "&eПодготовка... Нельзя двигаться ещё &e%sec%s&e."
+started: "&aИгра началась! Удачи."
+win: "&aПобедитель: &e%player%!"
+eliminated: "&cВы выбиты!"
+time-limit: "&eВремя игры истекло!"
+leave-hint: "&7Чтобы покинуть игру пропишите &e/pillars leave"
+
+# Редактор
+arena-created: "&aАрена &e%id% &aсоздана (мир &e%world%&a). Вас перенесло в режим редактирования."
+edit-enter: "&aВы вошли в режим редактирования арены &e%id%&a."
+edit-saved: "&aКарта &e%id%&a сохранена. Бэкап в &7plugins/SantaPillars/worlds/%id%&a. Возврат в лобби."
+team-set: "&aТочка team&6%team% &aустановлена."
+waiting-set: "&aТочка ожидания арены установлена."
+npc-created: "&aNPC для &e%size% &aсоздан."
+npc-removed: "&aNPC удалён."
+saved: "&aСохранено."
+reloaded: "&aПерезагружено."
+force-start: "&eИгра форс-стартована."
+
+# Scoreboard (sidebar)
+scoreboard:
+  waiting:
+    title: "&bSantaCraft"
+    lines:
+      - "&7Арена: &e%arena%"
+      - "&7Режим: &e%mode%"
+      - "&7Статус: &eОжидание"
+      - "&7Игроки: &e%current%&7/&e%max%"
+      - "&7Старт через: &e%countdown%s"
+      - "&8 "
+      - "&6Pillars"
+  ingame:
+    title: "&6Pillars"
+    lines:
+      - "&7Арена: &e%arena%"
+      - "&7Время: &e%elapsed%s"
+      - "&7Режим: &e%mode%"
+      - "&7Убийств: &e%kills%"
+      - "&7Игроки: &e%current%&7/&e%max%"
+      - "&8 "
