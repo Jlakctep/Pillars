@@ -21,11 +21,12 @@ pillars team1..team8: Set team spawns 1..8 (admin, in editor)
 NPC right-click opens a GUI with mode-specific arenas and a “Random Game” button.
 Permissions (LuckPerms)
 
-#Players:
+# Players:
 pillars.join: Join arena / NPC / GUI
 pillars.leave: Leave arena
 pillars.spectate: Spectate from lobby
 pillars.lobby: Teleport to lobby
+
 Special:
 pillars.start: Force-start arena
 Admin:
@@ -43,6 +44,7 @@ Extras
 Economy (Vault): rewards for win/lose/kills/top placements.
 Scoreboard: separate templates for waiting and in-game; placeholders: %arena%, %mode%, %current%/%max%, %kills%, %timeleft%, %countdown%, etc.
 All behavior and messages are configurable via config.yml and messages.yml.
+
 
 
 
