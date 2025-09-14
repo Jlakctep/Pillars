@@ -1,7 +1,7 @@
 package org.jlakctep.santaPillars.game;
 
 public enum GameSize {
-    S2("1x1", 2),
+    S16("1x16", 16),
     S4("1x4", 4),
     S8("1x8", 8);
 

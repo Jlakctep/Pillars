@@ -9,9 +9,11 @@ import java.io.File;
 public class Msg {
     private static YamlConfiguration cfg;
     private static String prefix;
+    private static org.jlakctep.santaPillars.SantaPillars plugin;
 
-    public static void load(SantaPillars plugin) {
-        File f = new File(plugin.getDataFolder(), "messages.yml");
+    public static void load(SantaPillars pl) {
+        plugin = pl;
+        File f = new File(pl.getDataFolder(), "messages.yml");
         cfg = YamlConfiguration.loadConfiguration(f);
         prefix = color(cfg.getString("prefix", ""));
     }
@@ -27,5 +29,31 @@ public class Msg {
         return out;
     }
 
-    private static String color(String s) { return ChatColor.translateAlternateColorCodes('&', s == null ? "" : s); }
+    private static String color(String s) {
+        String txt = s == null ? "" : s;
+        txt = normalizeSymbols(txt);
+        return ChatColor.translateAlternateColorCodes('&', txt);
+    }
+
+    // Удаляем вариационные селекторы/невидимые связки, которые делают эмодзи и ломают рендер в чате MC
+    private static String normalizeSymbols(String s) {
+        try {
+            // FE0F/FE0E — variation selectors; 200D — zero-width joiner; 2060..206F — invisibles
+            return s
+                    .replace("\uFE0F", "")
+                    .replace("\uFE0E", "")
+                    .replace("\u200D", "")
+                    .replace("\u2060", "")
+                    .replace("\u2061", "")
+                    .replace("\u2062", "")
+                    .replace("\u2063", "")
+                    .replace("\u2064", "")
+                    .replace("\u2066", "")
+                    .replace("\u2067", "")
+                    .replace("\u2068", "")
+                    .replace("\u2069", "");
+        } catch (Throwable ignored) { return s; }
+    }
+
+    // Economy placeholders removed on request
 }

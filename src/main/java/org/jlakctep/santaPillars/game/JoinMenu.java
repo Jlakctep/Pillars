@@ -1,17 +1,18 @@
 package org.jlakctep.santaPillars.game;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
-import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 import org.jlakctep.santaPillars.SantaPillars;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.TextDecoration;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -30,16 +31,16 @@ public final class JoinMenu {
     private static final int INVENTORY_SIZE = 54;
 
     public static void open(SantaPillars plugin, Player player, GameSize size) {
-        Inventory inv = Bukkit.createInventory(new Holder(plugin, size), INVENTORY_SIZE, net.kyori.adventure.text.Component.text("Арены " + size.key()));
+        Inventory inv = Bukkit.createInventory(new Holder(plugin, size), INVENTORY_SIZE, Component.text("Арены " + size.key()).decoration(TextDecoration.ITALIC, false));
 
         // Кнопка рандома в 49
         ItemStack clock = new ItemStack(Material.CLOCK);
         ItemMeta cm = clock.getItemMeta();
         if (cm != null) {
-            cm.setDisplayName(ChatColor.GOLD + "Рандомная игра");
-            List<String> lore = new ArrayList<>();
-            lore.add(ChatColor.GRAY + "Нажмите чтобы присоединиться");
-            cm.setLore(lore);
+            cm.displayName(Component.text("Рандомная игра").color(NamedTextColor.GOLD).decoration(TextDecoration.ITALIC, false));
+            List<Component> lore = new ArrayList<>();
+            lore.add(Component.text("Нажмите чтобы присоединиться").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, false));
+            cm.lore(lore);
             clock.setItemMeta(cm);
         }
         inv.setItem(49, clock);
@@ -72,10 +73,10 @@ public final class JoinMenu {
             ItemStack it = new ItemStack(Material.SLIME_BALL);
             ItemMeta im = it.getItemMeta();
             if (im != null) {
-                im.displayName(net.kyori.adventure.text.Component.text(a.id).color(net.kyori.adventure.text.format.NamedTextColor.GREEN));
-                List<net.kyori.adventure.text.Component> lore = new ArrayList<>();
-                lore.add(net.kyori.adventure.text.Component.text("Ожидание игроков [" + a.playersCount() + "/" + a.size.max() + "]")
-                        .color(net.kyori.adventure.text.format.NamedTextColor.GRAY));
+                im.displayName(Component.text(a.id).color(NamedTextColor.GREEN).decoration(TextDecoration.ITALIC, false));
+                List<Component> lore = new ArrayList<>();
+                lore.add(Component.text("Ожидание игроков [" + a.playersCount() + "/" + a.size.max() + "]")
+                        .color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, false));
                 im.lore(lore);
                 im.getPersistentDataContainer().set(keyId, PersistentDataType.STRING, a.id);
                 it.setItemMeta(im);

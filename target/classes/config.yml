@@ -1,9 +1,9 @@
 language: ru
 
 modes:
-  "1x1":
-    min-players: 2
-    max-players: 2
+  "1x16":
+    min-players: 8
+    max-players: 16
   "1x4":
     min-players: 2
     max-players: 4
@@ -17,6 +17,17 @@ timings:
 
   item-period-ticks: 90    # выдача предмета каждые 2 секунды
   hard-time-limit-seconds: 600   # 0 = без лимита
+
+floor:
+  rising_lava:
+    batch_period_ticks: 1    # период шага заполнения (20 тиков = 1 секунда)
+    blocks_per_second: 3      # сколько точек/столбиков заполнять за шаг
+    start_next_level_ratio: 0.35  # доля заполнения слоя для начала следующего
+    depth: 7                  # стартовая толщина базы (от y:0 вниз)
+    max_column_height: 3      # высота новых рандомных столбиков (1..3)
+  apocalypse:
+    blocks_per_tick: 5       # сколько блоков спавнить за тик
+  effect_radius: 35           # радиус вокруг спавна мира
 
 win:
   end-when-one-left: true
@@ -58,6 +69,10 @@ ui:
   bossbar: true
   holograms: true
 
+modes:
+  exchange:
+    swap_period_ticks: 200   # период обмена инвентарями (тики)
+
 lobby:
   world: world
   x: 0.5
@@ -74,6 +89,7 @@ permissions:
     pillars.leave: { description: "Покинуть арену.", default: true }
     pillars.spectate: { description: "Наблюдение из лобби.", default: true }
     pillars.lobby: { description: "Телепорт в лобби.", default: true }
+    pillars.vote: { description: "Голосование за режим/пол.", default: true }
   special:
     pillars.start: { description: "Форс-старт арены.", default: op }
   admin:
@@ -87,3 +103,25 @@ permissions:
     pillars.arenaremove: { description: "Удалить арену.", default: op }
     pillars.npc.create: { description: "Создать NPC.", default: op }
     pillars.npc.remove: { description: "Удалить NPC.", default: op }
+
+# Наборы прав для удобства (информационный блок, плагин его не читает)
+permission_sets:
+  default:
+    - pillars.join
+    - pillars.leave
+    - pillars.spectate
+    - pillars.lobby
+  donate:
+    - pillars.start
+    - pillars.vote
+  admin:
+    - pillars.admin
+    - pillars.lobby.set
+    - pillars.create
+    - pillars.edit
+    - pillars.editleave
+    - pillars.addspawn
+    - pillars.team
+    - pillars.arenaremove
+    - pillars.npc.create
+    - pillars.npc.remove
