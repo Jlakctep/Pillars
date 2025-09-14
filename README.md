@@ -69,11 +69,26 @@ pillars.npc.create: Create NPC
 
 pillars.npc.remove: Remove NPC
 
+# Game Modes
+Floor:
+  - Default
+  - Lava rising
+  - Ablockalypsis
+  - Fragile blocks
+
+Game Mode Selection:
+  - Default
+  - Shuffle
+  - Balance
+  - Swap
+
+
 # Extras
 Economy (Vault): rewards for win/lose/kills/top placements.
 
 Scoreboard: separate templates for waiting and in-game; placeholders: %arena%, %mode%, %current%/%max%, %kills%, %timeleft%, %countdown%, etc.
 All behavior and messages are configurable via config.yml and messages.yml.
+
 
 
 
